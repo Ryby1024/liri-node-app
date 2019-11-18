@@ -93,8 +93,8 @@ function movieInfo(movieName) {
     if (!movieName) {
         console.log("If you haven't watched Mr. Nobody then you should")
         movieName = "Mr. Nobody";
-        return false;
-    } else {
+        
+    } 
         let queryUrl1 = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
         axios.get(queryUrl1).then(function (response) {
             console.log("Title: " + response.data.Title);
@@ -129,7 +129,7 @@ function movieInfo(movieName) {
             });
 
     }
-}
+
 
 function doThis(dataArray) {
     fs.readFile("random.txt", "utf-8", function (error, data) {
