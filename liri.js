@@ -9,7 +9,7 @@ const moment = require("moment");
 const searchInfo = process.argv[2];
 const userInput = process.argv.slice(3).join(" ");
 
-
+function runInput(searchInfo, userInput){
 switch (searchInfo) {
     case "concert-this":
         concert(userInput);
@@ -21,28 +21,34 @@ switch (searchInfo) {
         movieInfo(userInput);
         break
     case "do-what-it-says":
-        doThis(getArtist);
-
+        doThis();
         break;
-
+        default:
+            console.log("this doesn't exist")
+}
 }
 console.log(userInput);
 
 
 function concert(artistName) {
-
+    var artistName = userInput;
     let queryUrl = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp"
     console.log(queryUrl);
 
     axios.get(queryUrl).then(function (res) {
-        if (artistName === "") {
-            console.log("No band or artist entered. Please enter a band or an artist")
+         
+        if (!artistName) {
+            console.log("Please enter the name of an Artist or Band.");
         } else {
+            let concertVenue = res.data;
 
-
-            console.log("The event is at " + res.data[0].venue.name + " .");
-            console.log("The " + res.data[0].venue.name + " is located in " + res.data[0].venue.city + ", " + res.data[0].venue.region + " .");
-            console.log("The event is going to be held on " + moment(res.data[0].datetime, 'YYYY-MM-DDTHH:mm:ss').format('MM/DD/YYYY, h:mm')) + " .";
+            for(let i = 0; i < concertVenue.length; i++){
+                console.log("\n")
+                console.log("The event is at " + concertVenue[i].venue.name + " ." + "\n");
+                console.log("The " + concertVenue[i].venue.name + " is located in " + concertVenue[i].venue.city + ", " + concertVenue[i].venue.region + " ." + "\n");
+                console.log("The event is going to be held on " + moment(concertVenue[i].datetime, 'YYYY-MM-DDTHH:mm:ss').format('MM/DD/YYYY, h:mm')) + " ." + "\n";
+            }
+           
         }
 
     })
@@ -68,43 +74,37 @@ function concert(artistName) {
         });
 }
 function getArtist(songName) {
-
-
-
     if (!songName) {
         songName = "The Sign Ace of Base";
     }
-
     spotify.search({ type: "track", query: songName }, function (error, res) {
         if (error) {
             console.log(error);
         } else {
-            console.log("Artist: " + res.tracks.items[0].artists[0].name);
-            console.log("Song Name: " + res.tracks.items[0].name);
-            console.log("Song Preview: " + res.tracks.items[0].preview_url);
-            console.log("Album: " + res.tracks.items[0].album.name);
+            console.log("Artist: " + res.tracks.items[0].artists[0].name + "\n");
+            console.log("Song Name: " + res.tracks.items[0].name + "\n");
+            console.log("Song Preview: " + res.tracks.items[0].preview_url + "\n");
+            console.log("Album: " + res.tracks.items[0].album.name + "\n");
         }
     })
 
 
 }
 function movieInfo(movieName) {
-
     if (!movieName) {
-        console.log("If you haven't watched Mr. Nobody then you should")
         movieName = "Mr. Nobody";
-        
-    } 
+    }
+    
         let queryUrl1 = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
         axios.get(queryUrl1).then(function (response) {
-            console.log("Title: " + response.data.Title);
-            console.log("Release Year: " + response.data.Year);
-            console.log("IMDB Rating: " + response.data.imdbRating);
-            console.log("Rotten Tomatoes Rating: " + response.data.tomatoRating);
-            console.log("Country Movie was Produced in " + response.data.Country);
-            console.log("Language: " + response.data.Language);
-            console.log("Plot: " + response.data.Plot);
-            console.log("Actors: " + response.data.Actors);
+            console.log("Title: " + response.data.Title + "\n");
+            console.log("Release Year: " + response.data.Year + "\n");
+            console.log("IMDB Rating: " + response.data.imdbRating + "\n");
+            console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value + "\n");
+            console.log("Country Movie was Produced in " + response.data.Country + "\n");
+            console.log("Language: " + response.data.Language + "\n");
+            console.log("Plot: " + response.data.Plot + "\n");
+            console.log("Actors: " + response.data.Actors + "\n");
         })
 
             .catch(function (error) {
@@ -131,12 +131,13 @@ function movieInfo(movieName) {
     }
 
 
-function doThis(dataArray) {
-    fs.readFile("random.txt", "utf-8", function (error, data) {
-        if (error) {
-            throw error;
-        }
-         dataArray = data.split(",");
-        console.log(dataArray[0], dataArray[1]);
-    })
-}
+    function doThis(dataArray) {
+        fs.readFile("random.txt", "utf-8", function (error, data) {
+            if (error) {
+                throw error;
+            }
+             dataArray = data.split(",");
+            runInput(dataArray[0], dataArray[1]);
+        })
+    }
+    runInput(searchInfo, userInput);
