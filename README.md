@@ -59,6 +59,8 @@
 
 <p>To retrieve this data we use that axios npm. When we recieve the data we console log it and use the moment npm to convert the date to MM/DD/YYYY.</p>
 
+<p>To use this command the user must type in node liri.js concert-this "artist name"</p>
+
 #### Screenshot of this working
 
 
@@ -66,10 +68,12 @@
 
 
 
-### The next search command is "spotify-this-song". 
+### The next search command "spotify-this-song" uses node-spotify-api and Spotify API 
 
 
 <p>This uses the node-spotify-api package to retrieve song information from the Spotify API.</p>
+
+<p>To use this command the user must type in node liri.js spotify-this-song "song name"</p>
 
 
 #### Screenshot of this command working
@@ -79,20 +83,24 @@
 
 
 
-### Up next is the "movie-this" command.
+### Up next is the "movie-this" command and it uses the OMDB API.
 
 
 <p>This command uses the axios package again but this time it retrieves data from the OMDB API</p>
+
+<p>To use this command the user must type in node liri.js movie-this "movie name"</p>
 
 #### Screenshot of this command working
 
 ![movie-this](./images/movie.jpg)
 
 
-### The last command is the "do-what-it-says" command.
+### The last command is the "do-what-it-says" command and it uses the fs(file system) Node package.
 
 
 <p>This command uses the fs Node package and has you retrieve the info form random.txt and use that data to search the Spotify API and get the info back for the song "I want it that way" </p>
+
+<p>To use this command the user must type in node liri.js do-what-it-says</p>
 
 
 #### Screenshot of this command working
