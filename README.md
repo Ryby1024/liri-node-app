@@ -18,20 +18,24 @@
 <h3>Each search command will produce different results as seen below:</h3>
 
 *concert-this
-    *Name of the venue
+    
+        *Name of the venue
 
-    *Venue location
+        *Venue location
 
-    *Date of the Event (use moment to format this as "MM/DD/YYYY")
+        *Date of the Event (use moment to format this as "MM/DD/YYYY")
 
+        
 *spotify-this-song
-    *Artist(s)
 
-    *The song's name
+        *Artist(s)
 
-    *A preview link of the song from Spotify
+        *The song's name
+
+        *A preview link of the song from Spotify
 
     *The album that the song is from
+
 
 *movie-this
 
