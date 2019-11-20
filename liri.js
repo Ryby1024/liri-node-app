@@ -51,6 +51,16 @@ function concert(artistName) {
            
         }
 
+        let concertLog = "=======Begin Concert Log========" + "\nConcert Venue: " + res.data[0].venue.name + "\nVenue Location: " + res.data[0].venue.city + ", " + res.data[0].venue.region + "\n=======End Concert Log=======";
+
+        fs.appendFile("log.txt", concertLog, function(err){
+            if(err){
+                console.log(err);
+            }else {
+                console.log("Items added!")
+            }
+        })
+
     })
         .catch(function (error) {
             if (error.response) {
@@ -86,6 +96,16 @@ function getArtist(songName) {
             console.log("Song Preview: " + res.tracks.items[0].preview_url + "\n");
             console.log("Album: " + res.tracks.items[0].album.name + "\n");
         }
+
+        let artistLog = "=======Begin Artist Log Data=======" + "\nArtist: " + res.tracks.items[0].artists[0].name + "\nSong Name: " + res.tracks.items[0].name + "\nSong Preview: " + res.tracks.items[0].preview_url + "\nAlbum: " + res.tracks.items[0].album.name + "\n=======End Artist Log Data=======";
+
+        fs.appendFile("log.txt", artistLog, function(err){
+            if(err){
+                console.log(err);
+            }else {
+                console.log("Items added!")
+            }
+        })
     })
 
 
@@ -105,6 +125,18 @@ function movieInfo(movieName) {
             console.log("Language: " + response.data.Language + "\n");
             console.log("Plot: " + response.data.Plot + "\n");
             console.log("Actors: " + response.data.Actors + "\n");
+
+            let movieLog = "=======Begin Movie Log=======" + "\nMovie Title: " +response.data.Title + "\nRelease Year: " + response.data.Year +
+                "\nIMDB Rating: " + response.data.imdbRating + "\nRotten Tomatoes Rating: " + response.data.Ratings[1].Value + "\nCountry Produced "+ response.data.Country + "\nLanguage: " + response.data.Language + "\nPlot: " + response.data.Plot + "\nActors: " +       response.data.Actors + "\n=======End Movie Log=======";
+            
+            fs.appendFile("log.txt", movieLog, function(err){
+                if(err){
+                    console.log(err);
+                }else {
+                    console.log("Items added!")
+                }
+            })
+
         })
 
             .catch(function (error) {

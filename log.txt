@@ -1,0 +1,17 @@
+Begin Concert Log
+Concert Venue: PNC Arena
+Venue Location: Raleigh, NC
+Begin Artist Log Data
+Artist: Radiohead
+Song Name: Creep
+Song Preview: https://p.scdn.co/mp3-preview/e7eb60e9466bc3a27299ea8803aadf4fa9cf795c?cid=d64fd56f49d94f96b4918a28eb77ef63
+Album: Pablo Honey.
+=======Begin Movie Log=======
+Movie Title: The Avengers
+Release Year: 2012
+IMDB Rating: 8.0
+Rotten Tomatoes Rating: 92%
+Country Produced USA
+Language: English, Russian, Hindi
+Plot: Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.
+Actors: Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth=======End Movie Log=======
